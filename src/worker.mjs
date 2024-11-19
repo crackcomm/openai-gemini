@@ -70,7 +70,11 @@ async function handleModels(apiKey) {
     body = await response.text();
     body = processModels(JSON.parse(body));
   }
-  return new Response(body, { status: response.status, statusText: response.statusText, headers: fixCors(response.headers) });
+  return new Response(body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: fixCors(),
+  });
 }
 
 const processModels = (data) => {
@@ -125,7 +129,11 @@ async function handleRequest (req, apiKey) {
       body = processResponse(JSON.parse(body), model, id);
     }
   }
-  return new Response(body, { status: response.status, statusText: response.statusText, headers: fixCors(response.headers) });
+  return new Response(body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: fixCors(),
+  });
 }
 
 const harmCategory = [
